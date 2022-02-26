@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="pf_opening_view" model="ir.ui.view">
+            <field name="name">Emloyee PF Manangement</field>
+            <field name="model">pf.opening</field>
+            <field name="arch" type="xml">
+            <form string="Investigation">
+                <header>
+                    <button string="Confirm" type="object" name="confirm_pf" groups="base.group_user"/>
+
+                </header>
+                <sheet>
+
+                    <group>
+                        <field name="name"/>
+                        <field name="employee_id"/>
+                        <field name="emp_contribution"/>
+                        <field name="com_contribution"/>
+                        <field name="balance"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+            </form>
+
+            </field>
+
+        </record>
+
+
+
+
+        <record id="pf_opening_action" model="ir.actions.act_window">
+            <field name="name">PF Opening Form</field>
+            <field name="res_model">pf.opening</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="domain">[('state','=','pending')]</field>-->
+            <field name="context">{}</field>
+        </record>
+
+        <!-- expense type tree -->
+        <record model="ir.ui.view" id="pf_opening_tree" >
+            <field name="name">leih</field>
+            <field name="model">pf.opening</field>
+            <field name="arch" type="xml">
+                <tree string="Employee PF List">
+                        <field name="name"/>
+                        <field name="employee_id"/>
+                        <field name="emp_contribution"/>
+                        <field name="com_contribution"/>
+                        <field name="balance"/>
+                        <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="emp_pf_opening_menu" name="Employee PF Opening" parent="main_employeelist_menu" action="pf_opening_action"/>
+
+    </data>
+</openerp>

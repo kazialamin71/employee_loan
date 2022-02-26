@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+<data>
+
+
+<record id="loan_abst_view_form" model="ir.ui.view">
+    <field name="name">loan.abst.form</field>
+    <field name="model">loan.abst</field>
+    <field name="arch" type="xml">
+        <form string="Loan">
+            <header>
+                <button string="Confirm" type="object" name="confirm_loan" groups="base.group_user"/>
+                        <button string="Cancel" type="object" name="loan_cancel" groups="leih.group_bill_register_button_cancel"/>
+                <button string="Pay Loan" type="object" name="pay_loan" groups="base.group_user" class="oe_highlight"/>
+            </header>
+
+            <sheet>
+                <div class="oe_left" style="width: 500px;">
+                    <div class="oe_title" style="width: 500px;">
+                        <label for="name" />
+                        <h1>
+                            <field
+                                        name="display_name"
+                                        string="# Loan"
+                                        class="oe_read_only"
+                                    />
+                            <field name="name" class="oe_edit_only" />
+                        </h1>
+
+                    </div>
+                </div>
+                <group name="group_1" colspan="4" col="2">
+                    <group name="group_1_1" colspan="1" col="2">
+                        <field name="company_id" groups="base.group_multi_company" />
+                        <field name="employee_id"/>
+                        <field name="request_date"/>
+                        <field name="previous_loan_amount"/>
+                        <field name="merge_loan" attrs="{'invisible':[('previous_loan_amount', '!=', 0)]}"/>
+                    </group>
+                    <group name="group_1_2" colspan="1" col="2">
+                        <field name="type_id" />
+                        <field
+                                    name="maximum_loan_amount"
+                                    widget="monetary"
+                                />
+                        <field
+                                    name="loan_amount"
+                                    widget="monetary"
+                                />
+                        <field name="maximum_installment_period"/>
+                    </group>
+                </group>
+
+
+                <notebook>
+                    <page name="page_schedule" string="Repayment Terms">
+                        <button
+                                    name="action_compute_payment"
+                                    type="object"
+                                    string="Compute Payment"
+                                    icon="gtk-execute"
+                                />
+                        <group name="group_schedule_1" colspan="4" col="2">
+                            <field name="first_payment_date" />
+                            <field name="interest" />
+                            <field name="manual_loan_period" />
+                            <field name="interest_period" />
+                        </group>
+                        <field name="payment_schedule_id">
+                            <tree string="Payment Schedules">
+                                <field name="schedule_date" />
+                                <field name="principle_amount" sum="Total Principle Amount"/>
+                                <field name="installment_amount" sum="Total Installment Amount"/>
+                                <field name="interest_amount" sum="Total Interest Amount"/>
+                                <field name="principle_payment_state" />
+                                <field name="state" invisible="0" />
+                            </tree>
+                        </field>
+                        <group name="group_schedulei_2" colspan="4" col="2">
+                            <field
+                                        name="total_principle_amount"
+                                        widget="monetary"
+                                    />
+<!--                            <field-->
+<!--                                        name="total_interest_amount"-->
+<!--                                        widget="monetary"-->
+<!--                                    />-->
+                        </group>
+                    </page>
+
+                </notebook>
+
+            </sheet>
+
+        </form>
+
+    </field>
+</record>
+
+            <record model="ir.ui.view" id="loan_abst_view_tree" >
+            <field name="name">leih</field>
+            <field name="model">loan.abst</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Loan List">
+
+                     <field name="display_name"/>
+                            <field name="employee_id"/>
+                            <field name="request_date"/>
+                            <field name="loan_amount"/>
+                            <field name="manual_loan_period"/>
+                            <field name="interest_period"/>
+
+                </tree>
+            </field>
+        </record>
+
+?</data>
+</openerp>

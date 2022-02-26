@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+        <record id="inherit_hr_employee" model="ir.ui.view">
+            <field name="name">inherit.hr.employee</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <data>
+            <xpath expr="//page[@string='HR Settings']" position="after">
+                                    <page string="PF Details">
+                                        <separator string="PF Details"/>
+                                        <field name="hr_employee_pf_id" mode="tree">
+                                <tree string="Select Referance Value" editable="top">
+
+                                    <field name="date"/>
+                                    <field name="emp_contribution"/>
+                                    <field name="com_contribution"/>
+                                    <field name="total_amount"/>
+                                    <field name="balance"/>
+
+                                </tree>
+                            </field>
+                                    </page>
+
+                                <page string="Loan Details">
+                                        <separator string="Loan Details"/>
+                                        <field name="hr_employee_loan_ids" mode="tree">
+                                <tree string="Select Referance Value" editable="top">
+                                    <field name="date"/>
+                                    <field name="loan_id"/>
+                                    <field name="loan"/>
+                                    <field name="given_loan"/>
+                                    <field name="taken_loan"/>
+                                    <field name="balance"/>
+                                </tree>
+                            </field>
+                                    </page>
+            </xpath>
+                </data>
+
+            </field>
+        </record>
+
+
+        <record id="inherit_hr_contract" model="ir.ui.view">
+            <field name="name">inherit.hr.contract</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <data>
+            <xpath expr="//field[@name='x_tax']" position="after">
+
+
+                                    <field name="loan_amount"/>
+                                    <field name="no_of_emi"/>
+                                    <field name="remaining_emi"/>
+                                    <field name="remaining_loan"/>
+                                    <field name="monthly_loan"/>
+                                    <field name="first_payment_date"/>
+                                    <field name="last_payment_date"/>
+
+            </xpath>
+                    <xpath expr="//page[@string='Work Permit']" position="after">
+                        <page string="Accounting">
+                            <group>
+                                    <field name="pf_account_id"/>
+                                    <field name="loan_account_id"/>
+                            </group>
+
+                                    </page>
+                    </xpath>
+                </data>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>

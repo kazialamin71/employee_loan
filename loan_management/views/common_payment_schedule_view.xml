@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+
+<record id="common_payment_schedule_view_form" model="ir.ui.view">
+    <field name="name">common.payment.schedule form</field>
+    <field name="model">common.payment.schedule</field>
+    <field name="arch" type="xml">
+        <form create="false" edit="false" delete="false">
+
+            <group name="group_main" colspan="4" col="2">
+                <field name="loan_id"/>
+                <field name="state" invisible="1"/>
+                <field name="schedule_date"/>
+                <field name="installment_amount" widget="monetary"/>
+            </group>
+            <notebook colspan="4">
+                <page name="page_principle" string="Principle">
+                    <group name="group_principle" colspan="4" col="2">
+                        <field name="principle_amount" widget="monetary"/>
+                        <field name="principle_payment_state"/>
+                    </group>
+                </page>
+                <page name="page_interest" string="Interest">
+                    <group name="group_interest" colspan="4" col="2">
+                        <field name="interest_amount" widget="monetary"/>
+                    </group>
+                </page>
+            </notebook>
+        </form>
+    </field>
+</record>
+
+</data>
+</openerp>

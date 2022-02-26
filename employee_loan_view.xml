@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="emplyee_loan_view" model="ir.ui.view">
+            <field name="name">Emloyee Loan Application Form</field>
+            <field name="model">employee.loan</field>
+            <field name="arch" type="xml">
+            <form string="Investigation">
+                <header>
+                    <button string="Confirm" type="object" name="change_status" groups="base.group_user"/>
+                   
+                </header>
+                <sheet>
+
+                    <group>
+                        <field name="loan_disburse_date"/>
+                        <field name="employee_id"/>
+                        <field name="loan_amount"/>
+                        <field name="type"/>
+                        <field name="loan_rate"/>
+                        <field name="emi_no"/>
+                        <field name="pay_amount_periodical"/>
+                        <field name="loan_payble_amount"/>
+                        <field name="loan_last_payment_date"/>
+
+                    </group>
+
+
+                </sheet>
+            </form>
+
+            </field>
+
+        </record>
+
+
+
+
+        <record id="employee_loan_action" model="ir.actions.act_window">
+            <field name="name">Employee Loan Form</field>
+            <field name="res_model">employee.loan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="domain">[('state','=','pending')]</field>-->
+            <field name="context">{}</field>
+        </record>
+
+        <!-- expense type tree -->
+        <record model="ir.ui.view" id="emplyee_loan_tree" >
+            <field name="name">leih</field>
+            <field name="model">employee.loan</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Loan List">
+    
+                     <field name="employee_id"/>
+                            <field name="loan_amount"/>
+                            <field name="confirmed_loan_amount"/>
+                            <field name="loan_rate"/>
+                            <field name="emi_no"/>
+                            <field name="pay_amount_periodical"/>
+                            <field name="loan_payble_amount"/>
+                            <field name="loan_disburse_date"/>
+                            <field name="loan_last_payment_date"/>
+                            <field name="state"/>   
+    
+                </tree>
+            </field>
+        </record>
+
+
+    
+        
+         <menuitem id="main_employeelist_menu" name="Employee List"/>
+
+        <menuitem id="employeelist_menu" name="Employee Loan List" parent="main_employeelist_menu"/>
+        <menuitem id="emp_loan_menu" name="Employee Loan List" parent="main_employeelist_menu" action="employee_loan_action"/>
+
+
+        <menuitem name="Employee list" id="main_employeelist_menu"
+            groups="base.group_sale_salesman"
+            parent="base.menu_base_partner" sequence="3" />
+        
+        
+    </data>
+</openerp>
