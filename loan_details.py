@@ -35,6 +35,7 @@ class hr_employee_loan(osv.osv):
         'pf':fields.float("PF"),
         'loan':fields.float("Loan"),
         'given_loan':fields.float("Given Loan"),
+        'interest':fields.float("Interest"),
         'taken_loan':fields.float("Taken Loan"),
         'balance':fields.float("Balance"),
         'loan_id':fields.many2one("leih.loan","Loan ID")
@@ -64,7 +65,8 @@ class hr_contract(osv.osv):
         'first_payment_date': fields.date('First Payment Date'),
         'last_payment_date':fields.date("Last Payment Date"),
         'pf_account_id':fields.many2one("account.account","PF Account"),
-        'loan_account_id':fields.many2one("account.account","Loan Account")
+        'loan_account_id':fields.many2one("account.account","Loan Account"),
+        'gins_account_id':fields.many2one("account.account","Group Insurance Account"),
     }
 
 

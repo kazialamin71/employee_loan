@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- LEIH Access Title -->
+        <record model="ir.module.category" id="module_category_emp">
+            <field name="name">Employee Access Layer</field>
+            <field name="sequence">20</field>
+        </record>
+
+            <!-- Hospital Menu Access -->
+            <record model="ir.module.category" id="module_category_emp_loan">
+                <field name="name">Employee Loan</field>
+                <field name="category_id" ref="module_category_emp"/>
+                <field name="sequence">1</field>
+            </record>
+
+                <!-- Hospital Menu Access -->
+                <record id="group_hospital_menu_emp_loan" model="res.groups">
+                    <field name="name">Menu1- Emp Loan</field>
+                    <field name="category_id" ref="module_category_emp_loan"/>
+                    <field name="users" eval="[(4, ref('base.user_root'))]"/>
+                </record>
+
+
+
+    </data>
+</openerp>

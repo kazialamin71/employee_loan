@@ -72,15 +72,15 @@
 
     
         
-         <menuitem id="main_employeelist_menu" name="Employee List"/>
+         <menuitem id="main_employeelist_menu" name="Employee List" groups="group_hospital_menu_emp_loan"/>
 
-        <menuitem id="employeelist_menu" name="Employee Loan List" parent="main_employeelist_menu"/>
-        <menuitem id="emp_loan_menu" name="Employee Loan List" parent="main_employeelist_menu" action="employee_loan_action"/>
+        <menuitem id="employeelist_menu" name="Employee Loan List" parent="main_employeelist_menu" groups="group_hospital_menu_emp_loan"/>
+        <menuitem id="emp_loan_menu" name="Employee Loan List" parent="main_employeelist_menu" action="employee_loan_action" groups="group_hospital_menu_emp_loan"/>
 
 
         <menuitem name="Employee list" id="main_employeelist_menu"
-            groups="base.group_sale_salesman"
-            parent="base.menu_base_partner" sequence="3" />
+            groups="base.group_sale_salesman,group_hospital_menu_emp_loan"
+            parent="base.menu_base_partner"  sequence="3" />
         
         
     </data>

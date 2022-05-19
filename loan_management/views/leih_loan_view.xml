@@ -86,6 +86,7 @@
     name="Loan In"
     parent="main_employeelist_menu"
     action="leih_loan_action"
+    groups="group_hospital_menu_emp_loan"
     sequence="1"/>
 
 </data>

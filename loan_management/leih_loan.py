@@ -28,17 +28,24 @@ class Leih_loan(osv.osv):
         emp_id=loan_obj.employee_id.id
         loan_id=loan_obj.id
         total_loan=loan_obj.loan_amount
-        total_balance=last_balance+total_loan
-        request_date=loan_obj.request_date
-        total_emi_no=len(loan_obj.payment_schedule_id)
-        interest_period=loan_obj.interest_period
-        first_payment_date=loan_obj.first_payment_date
-        total_with_interest=loan_obj.total_principle_amount
-
+        interest_period = loan_obj.interest_period
 
         for item in loan_obj.payment_schedule_id:
             installment_amount=item.installment_amount
             last_date=item.schedule_date
+        if interest_period>0:
+            interest=installment_amount*interest_period
+        else:
+            interest=0
+        total_balance=last_balance+total_loan+interest
+        request_date=loan_obj.request_date
+        total_emi_no=len(loan_obj.payment_schedule_id)
+
+        first_payment_date=loan_obj.first_payment_date
+        total_with_interest=loan_obj.total_principle_amount
+
+
+
         contract_id=self.pool.get('hr.contract').search(cr, uid, [('employee_id','=', emp_id)], context=context)[0]
         contract_obj=self.pool.get('hr.contract').browse(cr, uid, contract_id, context=context)
         cr.execute('update hr_contract set loan_amount=%s,remaining_loan=%s,no_of_emi=%s,remaining_emi=%s,monthly_loan=%s,first_payment_date=%s,last_payment_date=%s where id=%s', (total_with_interest,total_with_interest,total_emi_no,total_emi_no,installment_amount,first_payment_date,last_date,contract_id))
@@ -48,6 +55,7 @@ class Leih_loan(osv.osv):
             'loan': total_loan,
             'balance': total_balance,
             'given_loan': total_loan,
+            'interest': interest,
             'date':request_date,
             'loan_id':loan_id
         }

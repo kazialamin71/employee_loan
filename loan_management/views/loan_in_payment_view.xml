@@ -49,6 +49,7 @@
     name="Loan In Payment"
     parent="main_employeelist_menu"
     action="loan_in_payment_action"
+    groups="group_hospital_menu_emp_loan"
     sequence="3"/>
 
 </data>

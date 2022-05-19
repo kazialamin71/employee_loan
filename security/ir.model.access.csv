@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_emp_loan,employee.loan,model_employee_loan,group_hospital_menu_emp_loan,1,1,1,0
+access_hr_employee_loan,hr.employee.loan,model_hr_employee_loan,group_hospital_menu_emp_loan,1,1,1,1
+access_hr_employee_pf,hr.employee.pf,model_hr_employee_pf,group_hospital_menu_emp_loan,1,1,1,1
+access_common_payment_schedule,common.payment.schedule,model_common_payment_schedule,group_hospital_menu_emp_loan,1,1,1,1
+access_common_payment_schedule,common.payment.schedule,model_common_payment_schedule,group_hospital_menu_emp_loan,1,1,1,1
+access_loan_in_payment,loan.in_payment,model_loan_in_payment,group_hospital_menu_emp_loan,1,1,1,1
+access_loan_abst,loan.abst,model_loan_abst,group_hospital_menu_emp_loan,1,1,1,1
+access_pf_opening,pf.opening,model_pf_opening,group_hospital_menu_emp_loan,1,1,1,1
+
+
+
+
+
+
+
+

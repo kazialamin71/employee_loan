@@ -143,6 +143,8 @@ class hr_payslip(osv.osv):
     # else:
     #     result = inputs.CPFLOAN.amount
 
+    # result = inputs.CPFLOAN.amount
+
 
 #
 # class hr_employee(osv.osv):

@@ -57,7 +57,7 @@
             </field>
         </record>
 
-        <menuitem id="emp_pf_opening_menu" name="Employee PF Opening" parent="main_employeelist_menu" action="pf_opening_action"/>
+        <menuitem id="emp_pf_opening_menu" name="Employee PF Opening" parent="main_employeelist_menu" action="pf_opening_action" groups="group_hospital_menu_emp_loan"/>
 
     </data>
 </openerp>

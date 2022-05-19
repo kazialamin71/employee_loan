@@ -9,6 +9,7 @@
     'author': 'OpenERP SA',
     'depends': ['sale','hr'],
     'data': [
+        'security/employee_loan_security.xml',
         'employee_loan_view.xml',
         'loan_details_view.xml',
         'loan_management/views/loan_common_view.xml',
@@ -16,6 +17,8 @@
         'loan_management/views/leih_loan_view.xml',
         'loan_management/views/loan_in_payment_view.xml',
         'PF/pf_opening_view.xml',
+        'PF/pf_opening_view.xml',
+        'security/ir.model.access.csv',
     ],
 
     'installable': True,
